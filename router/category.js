@@ -48,6 +48,9 @@ router.put('/category/:id', (req,res) => {
         name: req.body.name,
         icon: req.body.icon,
         color: req.body.color
+    },{
+        new : true,
+        useFindAndModify: false
     })
     .then( (category) =>  res.status(200).json({success : true, category: category }))
     .catch( (err) => res.status(500).json({success: false, message: 'Cant delete category ' + err}))
