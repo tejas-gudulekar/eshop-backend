@@ -1,11 +1,15 @@
 const express = require(`express`)
 const morgan = require('morgan')
 const mongoose = require('mongoose')
+
 const categoryRoutes = require('./router/category')
 const prouductRoutes = require('./router/product')
-require('dotenv/config')
+const userRoutes = require('./router/user')
 
+require('dotenv/config')
 const api_prefix = process.env.API_URL
+
+//Initialization
 const app = express()
 
 //Middlewars
@@ -13,6 +17,7 @@ app.use(morgan(`tiny`))
 app.use(express.json());
 app.use(api_prefix + '/', categoryRoutes);
 app.use(api_prefix + '/', prouductRoutes);
+app.use(api_prefix + '/', userRoutes);
 
 
 // Connect Mongodb
